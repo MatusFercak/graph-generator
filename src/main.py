@@ -1,9 +1,13 @@
 import matplotlib.pyplot as plt
+from io import BytesIO
 
 
 def main(context):
     plt.plot([1, 2, 3, 4])
     plt.ylabel('some numbers')
+    buf = BytesIO()
+    plt.savefig(buf, format="png")
+    # print(buf)
 
     context.log("Hello, Logs!")
 
@@ -14,7 +18,7 @@ def main(context):
     if context.req.method == "GET":
         # Send a response with the res object helpers
         # `ctx.res.send()` dispatches a string back to the client
-        return context.res.send("Hello, World!")
+        return context.res.send(buf)
 
     # `ctx.res.json()` is a handy helper for sending JSON
     return context.res.json(
@@ -28,5 +32,5 @@ def main(context):
 
 
 # if __name__ == "__main__":
+#     main(None)
 #     pass
-#     # main(None)
