@@ -6,7 +6,7 @@ def main(context):
     plt.plot([1, 2, 3, 4])
     plt.ylabel('some numbers')
     buf = BytesIO()
-    plt.figure(figsize=(100, 100))
+    plt.figure(figsize=(3, 3))
     plt.savefig(buf, format="png")
     # print(buf)
 
