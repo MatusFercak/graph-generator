@@ -1,20 +1,10 @@
-from appwrite.client import Client
-import os
+import matplotlib.pyplot as plt
 
 
-# This is your Appwrite function
-# It's executed each time we get a request
 def main(context):
-    # Why not try the Appwrite SDK?
-    #
-    # client = (
-    #     Client()
-    #     .set_endpoint("https://cloud.appwrite.io/v1")
-    #     .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-    #     .set_key(os.environ["APPWRITE_API_KEY"])
-    # )
+    plt.plot([1, 2, 3, 4])
+    plt.ylabel('some numbers')
 
-    # You can log messages to the console
     context.log("Hello, Logs!")
 
     # If something goes wrong, log an error
@@ -35,3 +25,8 @@ def main(context):
             "getInspired": "https://builtwith.appwrite.io",
         }
     )
+
+
+# if __name__ == "__main__":
+#     pass
+#     # main(None)
