@@ -21,4 +21,4 @@ def main(context):
                 context.error(error.message)
                 return context.res.json({"ok": False, "error": error.message}, 400)
         if context.req.path == "/params":
-            context.log(context.req.parameters)
+            context.log(context.req.query)
