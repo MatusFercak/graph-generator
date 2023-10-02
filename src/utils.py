@@ -1,4 +1,4 @@
-necessary_data = {
+nessesery_data = {
     "x": list,
     "y": list,
     "x_label": str,
@@ -25,11 +25,11 @@ def check(context) -> None:
     invalid = list()
 
     for key in body.keys():
-        if key not in necessary_data.keys():
+        if key not in nessesery_data.keys():
             missing.append(key)
-        elif type(body[key]) != necessary_data[key]:
+        elif type(body[key]) != nessesery_data[key]:
             invalid.append(
-                f"The key has an incorrect data type, it should be a {necessary_data[key]}, but it is {type(body[key])}\n")
+                f"The key has an incorrect data type, it should be a {nessesery_data[key]}, but it is {type(body[key])}\n")
 
     if missing:
         raise ValueError(f"Missing required values: {', '.join(missing)}")
