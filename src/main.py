@@ -7,6 +7,7 @@ def main(context):
     try:
         check(context)
         body = dict(context.req.body)
+        context.log(context.req.body)
         plt.plot(body["x"], body["y"])
         plt.title(body["title"])
         plt.xlabel(body["x_label"])
