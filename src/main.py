@@ -18,6 +18,5 @@ def main(context):
             return context.res.send(buf.getvalue())
 
         except Exception as error:
-            """"Error handling"""
             context.error(error)
-            return context.res.json({"ok": False, "error": error}, 500)
+            return context.res.json({"ok": False, "error": error.message}, 400)
