@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from utils import check
+from .utils import check
 from io import BytesIO
 
 
