@@ -4,14 +4,20 @@ from io import BytesIO
 
 def main(context):
     if context.req.method == "GET":
+        context.log(type(context.req.body))
         context.log(context.req.body)
+        body = dict(context.req.body)
+        context.log(body)
+        context.log(type(body.x))
+        context.log(type(body.y))
+        context.log(type(body.x_label))
+        context.log(type(body.y_label))
+        context.log(type(body.title))
 
-        x_axis = [1, 2, 3]
-        y_axis = ["A", "B", "C"]
-        plt.plot(x_axis, y_axis)
-
-        plt.xlabel('num')
-        plt.ylabel('let')
+        plt.title(body.title)
+        plt.xlabel(body.x_label)
+        plt.ylabel(body.y_label)
+        plt.plot(body.x, body.y)
 
         buf = BytesIO()
         plt.savefig(buf, format="png")
