@@ -72,6 +72,7 @@ def generate_graf_png(data: Data) -> bytes:
     and a title. It generates a plot using Matplotlib and saves it as a PNG image.
     The PNG image data is then returned as bytes.
     """
+    plt.clf()
     plt.plot(data.x, data.y)
     plt.xlabel(data.x_label)
     plt.ylabel(data.y_label)
