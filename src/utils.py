@@ -42,9 +42,9 @@ def preprocess_data(obj: {"x": list or str, "y": list or str, "x_label": str, "y
     This function preprocesses data for plotting by converting 'x' and 'y' to lists if they are not already lists,
     and ensuring that 'x' and 'y' have the same number of values. It also assigns 'x_label', 'y_label', and 'title' to 'data'.
     """
-    if type(obj['x']) == str and type(obj['x']) == str:
+    if type(obj['x']) == str and type(obj['y']) == str:
         data.x = obj['x'].split(',')
-        data.y = obj['x'].split(',')
+        data.y = obj['y'].split(',')
     else:
         data.x = obj['x']
         data.y = obj['y']
