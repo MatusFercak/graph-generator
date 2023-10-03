@@ -6,7 +6,7 @@ nessesery_keys = ["x", "y", "x_type", "y_type", "x_label", "y_label", "title"]
 
 def main(context):
     try:
-        if context.req.method == "GET":
+        if context.req.method == "GET" and context.req.path == "/graph.png":
             # @dataobject with Deafult values
             data: Data = Data(
                 x=[1, 2, 3, 4, 5],
@@ -17,11 +17,11 @@ def main(context):
                 y_label="y-label",
                 title="Deafult title")
 
-            if context.req.path == "/graph.png":
+            if context.req.body:
                 throw_if_missing(context.req.body, nessesery_keys)
                 preprocess_data(context.req.body, data)
 
-            if context.req.path == "/params/graph.png":
+            else:
                 throw_if_missing(context.req.query, nessesery_keys)
                 preprocess_data(context.req.query, data)
 
