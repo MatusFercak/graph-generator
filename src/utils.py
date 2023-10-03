@@ -52,9 +52,6 @@ def preprocess_data(obj: {"x": list or str, "y": list or str, "x_label": str, "y
         data.x = obj['x']
         data.y = obj['y']
 
-    data.x = [str(val) if data.x_type == "str" else int(val) for val in data.x]
-    data.y = [str(val) if data.x_type == "str" else int(val) for val in data.x]
-
     if len(data.x) != len(data.y):
         raise ValueError(
             "Attributes 'x' and 'y' have a different number of values. To proceed, both attributes must have the same number of values.")
