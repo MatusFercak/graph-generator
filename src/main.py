@@ -1,5 +1,5 @@
 
-import utils
+from .utils import Data, throw_if_missing, preprocess_data, generate_graf_png
 
 nessesery_keys = ["x", "y", "x_label", "y_label", "title"]
 
@@ -8,17 +8,17 @@ def main(context):
     try:
         if context.req.method == "GET":
             # @dataobject
-            data: utils.Data = utils.Data()
+            data: Data = Data()
 
             if context.req.path == "/":
-                utils.throw_if_missing(context.req.body, nessesery_keys)
-                utils.preprocess_data(context.req.body, data)
+                throw_if_missing(context.req.body, nessesery_keys)
+                preprocess_data(context.req.body, data)
 
             if context.req.path == "/params":
-                utils.throw_if_missing(context.req.query, nessesery_keys)
-                utils.preprocess_data(context.req.query, data)
+                throw_if_missing(context.req.query, nessesery_keys)
+                preprocess_data(context.req.query, data)
 
-            graf: bytes = utils.generate_graf_png(data)
+            graf: bytes = generate_graf_png(data)
             return context.res.send(graf)
 
     except Exception as error:
