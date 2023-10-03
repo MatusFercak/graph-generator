@@ -4,12 +4,12 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Data:
-    x: list[str or int]
-    y: list[str or int]
-    x_label: str
-    y_label: str
-    title: str
+class Data():
+    x: list[str or int] = [1, 2, 3, 4, 5]
+    y: list[str or int] = ['1', '2', '3', '4', '5']
+    x_label: str or None = "x-label"
+    y_label: str or None = "y-label"
+    title: str or None = "Deafult title"
 
 
 def throw_if_missing(obj: object, keys: list[str]) -> None:

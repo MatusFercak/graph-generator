@@ -21,6 +21,9 @@ def main(context):
             graf: bytes = generate_graf_png(data)
             return context.res.send(graf)
 
-    except Exception as error:
+    except ValueError as error:
         context.error(error.message)
         return context.res.json({"ok": False, "error": error.message}, 400)
+
+    except Exception as error:
+        return context.res.json({"ok": False, "error": str(error)}, 500)
