@@ -46,8 +46,8 @@ def preprocess_data(obj: {"x": list or str, "y": list or str, "x_label": str, "y
         data.x = obj['x'].split(',')
         data.y = obj['x'].split(',')
     else:
-        data.x = list(obj['x'])
-        data.y = list(obj['y'])
+        data.x = obj['x']
+        data.y = obj['y']
 
     if len(data.x) != len(data.y):
         raise ValueError(

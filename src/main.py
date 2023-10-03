@@ -26,4 +26,5 @@ def main(context):
         return context.res.json({"ok": False, "error": error.message}, 400)
 
     except Exception as error:
+        context.error(str(error))
         return context.res.json({"ok": False, "error": str(error)}, 500)
