@@ -29,8 +29,8 @@ def main(context):
             return context.res.send(graf)
 
     except ValueError as error:
-        context.error(error.message)
-        return context.res.json({"ok": False, "error": error.message}, 400)
+        context.error(str(error))
+        return context.res.json({"ok": False, "error": str(error)}, 400)
 
     except Exception as error:
         context.error(str(error))
