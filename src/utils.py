@@ -58,7 +58,7 @@ def preprocess_data(obj: {"x": list or str, "y": list or str, "x_label": str, "y
 
     if data.x_type not in ["str", "num"] and data.y_type not in ["str", "num"]:
         raise ValueError(
-            "Both 'x_type' and 'y_type' must be either 'str' or 'num'.")
+            f"Both 'x_type' and 'y_type' must be either 'str' or 'num'.]\n{str(obj)}")
 
     data.x = [str(val) if data.x_type == "str" else float(val)
               for val in data.x]
