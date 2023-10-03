@@ -21,11 +21,10 @@ def main(context):
 
             if context.req.path == "/params":
                 throw_if_missing(context.req.query, nessesery_keys)
-                # preprocess_data(context.req.query, data)
+                preprocess_data(context.req.query, data)
 
-            # graf: bytes = generate_graf_png(data)
-            # return context.res.send(graf)
-            return context.res.send('ok')
+            graf: bytes = generate_graf_png(data)
+            return context.res.send(graf)
 
     except ValueError as error:
         context.error(error.message)
@@ -33,4 +32,4 @@ def main(context):
 
     except Exception as error:
         context.error(str(error))
-        return context.res.json({"ok": False, "error": error}, 500)
+        return context.res.json({"ok": False, "error": str(error)}, 500)
