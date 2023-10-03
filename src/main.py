@@ -1,7 +1,7 @@
 
 from .utils import Data, throw_if_missing, preprocess_data, generate_graf_png
 
-nessesery_keys = ["x", "y", "x_type", "y_type" "x_label", "y_label", "title"]
+nessesery_keys = ["x", "y", "x_type", "y_type", "x_label", "y_label", "title"]
 
 
 def main(context):
