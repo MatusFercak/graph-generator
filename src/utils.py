@@ -7,6 +7,8 @@ from dataclasses import dataclass, field
 class Data():
     x: list[str] or list[int]
     y: list[str] or list[int]
+    x_type: str
+    y_type: str
     x_label: str
     y_label: str
     title: str
@@ -30,17 +32,18 @@ def throw_if_missing(obj: object, keys: list[str]) -> None:
 
 def preprocess_data(obj: {"x": list or str, "y": list or str, "x_label": str, "y_label": str, "title": str}, data: Data) -> None:
     """
-    Preprocess data for plotting.
+    Preprocesses data for plotting.
 
     Parameters:
         obj (dict): A dictionary containing 'x', 'y', 'x_label', 'y_label', and 'title' keys.
         data (Data): An object to store preprocessed data.
 
     Raises:
-        ValueError: If 'x' and 'y' have a different number of values.
+        ValueError: If 'x' and 'y' have a different number of values. This error is raised when 'x' and 'y' have
+        a different number of values, which would result in an invalid plot.
 
-    This function preprocesses data for plotting by converting 'x' and 'y' to lists if they are not already lists,
-    and ensuring that 'x' and 'y' have the same number of values. It also assigns 'x_label', 'y_label', and 'title' to 'data'.
+        ValueError: If 'x_type' or 'y_type' is not 'str' or 'int'. This error is raised when 'x_type' or 'y_type' 
+        is not one of the valid types ('str' or 'int').
     """
     if type(obj['x']) == str and type(obj['y']) == str:
         data.x = obj['x'].split(',')
@@ -49,9 +52,19 @@ def preprocess_data(obj: {"x": list or str, "y": list or str, "x_label": str, "y
         data.x = obj['x']
         data.y = obj['y']
 
+    data.x = [str(val) if data.x_type == "str" else int(val) for val in data.x]
+    data.y = [str(val) if data.x_type == "str" else int(val) for val in data.x]
+
     if len(data.x) != len(data.y):
         raise ValueError(
             "Attributes 'x' and 'y' have a different number of values. To proceed, both attributes must have the same number of values.")
+
+    if data.x_type not in ["str", "int"] and data.y_type not in ["str", "int"]:
+        raise ValueError(
+            "Both 'x_type' and 'y_type' must be either 'str' or 'int'.")
+
+    data.x = [str(val) if data.x_type == "str" else int(val) for val in data.x]
+    data.y = [str(val) if data.y_type == "str" else int(val) for val in data.y]
 
     data.x_label = str(obj['x_label'])
     data.y_label = str(obj['y_label'])

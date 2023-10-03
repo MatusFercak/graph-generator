@@ -1,7 +1,7 @@
 
 from .utils import Data, throw_if_missing, preprocess_data, generate_graf_png
 
-nessesery_keys = ["x", "y", "x_label", "y_label", "title"]
+nessesery_keys = ["x", "y", "x_type", "y_type" "x_label", "y_label", "title"]
 
 
 def main(context):
@@ -11,15 +11,17 @@ def main(context):
             data: Data = Data(
                 x=[1, 2, 3, 4, 5],
                 y=['1', '2', '3', '4', '5'],
+                x_type="int",
+                y_type="int",
                 x_label="x-label",
                 y_label="y-label",
                 title="Deafult title")
 
-            if context.req.path == "/":
+            if context.req.path == "/graph.png":
                 throw_if_missing(context.req.body, nessesery_keys)
                 preprocess_data(context.req.body, data)
 
-            if context.req.path == "/params":
+            if context.req.path == "/params/graph.png":
                 throw_if_missing(context.req.query, nessesery_keys)
                 preprocess_data(context.req.query, data)
 
