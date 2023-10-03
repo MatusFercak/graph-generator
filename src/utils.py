@@ -42,8 +42,8 @@ def preprocess_data(obj: {"x": list or str, "y": list or str, "x_label": str, "y
         ValueError: If 'x' and 'y' have a different number of values. This error is raised when 'x' and 'y' have
         a different number of values, which would result in an invalid plot.
 
-        ValueError: If 'x_type' or 'y_type' is not 'str' or 'int'. This error is raised when 'x_type' or 'y_type' 
-        is not one of the valid types ('str' or 'int').
+        ValueError: If 'x_type' or 'y_type' is not 'str' or 'num'. This error is raised when 'x_type' or 'y_type' 
+        is not one of the valid types ('str' or 'num').
     """
     if type(obj['x']) == str and type(obj['y']) == str:
         data.x = obj['x'].split(',')
@@ -56,12 +56,14 @@ def preprocess_data(obj: {"x": list or str, "y": list or str, "x_label": str, "y
         raise ValueError(
             "Attributes 'x' and 'y' have a different number of values. To proceed, both attributes must have the same number of values.")
 
-    if data.x_type not in ["str", "int"] and data.y_type not in ["str", "int"]:
+    if data.x_type not in ["str", "num"] and data.y_type not in ["str", "num"]:
         raise ValueError(
-            "Both 'x_type' and 'y_type' must be either 'str' or 'int'.")
+            "Both 'x_type' and 'y_type' must be either 'str' or 'num'.")
 
-    data.x = [str(val) if data.x_type == "str" else int(val) for val in data.x]
-    data.y = [str(val) if data.y_type == "str" else int(val) for val in data.y]
+    data.x = [str(val) if data.x_type == "str" else float(val)
+              for val in data.x]
+    data.y = [str(val) if data.y_type == "str" else float(val)
+              for val in data.y]
 
     data.x_label = str(obj['x_label'])
     data.y_label = str(obj['y_label'])
