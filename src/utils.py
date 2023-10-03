@@ -5,8 +5,8 @@ from dataclasses import dataclass
 
 @dataclass
 class Data:
-    x: list[str | int]
-    y: list[str | int]
+    x: list[str or int]
+    y: list[str or int]
     x_label: str
     y_label: str
     title: str
@@ -28,7 +28,7 @@ def throw_if_missing(obj: object, keys: list[str]) -> None:
     pass
 
 
-def preprocess_data(obj: {"x": list | str, "y": list | str, "x_label": str, "y_label": str, "title": str}, data: Data) -> None:
+def preprocess_data(obj: {"x": list or str, "y": list or str, "x_label": str, "y_label": str, "title": str}, data: Data) -> None:
     """
     Preprocess data for plotting.
 
