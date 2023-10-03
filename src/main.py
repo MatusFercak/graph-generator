@@ -17,7 +17,7 @@ def main(context):
 
             if context.req.path == "/":
                 throw_if_missing(context.req.body, nessesery_keys)
-                # preprocess_data(context.req.body, data)
+                preprocess_data(context.req.body, data)
 
             if context.req.path == "/params":
                 throw_if_missing(context.req.query, nessesery_keys)
