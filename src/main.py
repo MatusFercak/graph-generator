@@ -7,8 +7,13 @@ nessesery_keys = ["x", "y", "x_label", "y_label", "title"]
 def main(context):
     try:
         if context.req.method == "GET":
-            # @dataobject
-            data: Data = Data()
+            # @dataobject with Deafult values
+            data: Data = Data(
+                x=[1, 2, 3, 4, 5],
+                y=['1', '2', '3', '4', '5'],
+                x_label="x-label",
+                y_label="y-label",
+                title="Deafult title")
 
             if context.req.path == "/":
                 throw_if_missing(context.req.body, nessesery_keys)

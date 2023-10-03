@@ -5,11 +5,11 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Data():
-    x: list[str or int] = field(default_factory=[1, 2, 3, 4, 5])
-    y: list[str or int] = field(default_factory=['1', '2', '3', '4', '5'])
-    x_label: str or None = field(default_factory="x-label")
-    y_label: str or None = field(default_factory="y-label")
-    title: str or None = field(default_factory="Deafult title")
+    x: list[str] or list[int]
+    y: list[str] or list[int]
+    x_label: str
+    y_label: str
+    title: str
 
 
 def throw_if_missing(obj: object, keys: list[str]) -> None:
