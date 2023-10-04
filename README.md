@@ -30,20 +30,20 @@ You can use the function with parameters provided in the request body, except fo
 **Sample `400` Response.**
 
 ```json
-	{
-		"ok":  False,
-		"error":  "ErrorMessage: --//--"
-	}
+{
+	"ok": false,
+	"error": "ErrorMessage: --//--"
+}
 ```
 
 **Sample `405` Response.**
 Response when the request method was POST, PUT, PATCH, DELETE
 
 ```json
-	{
-		"ok":  False,
-		"message":  "Try GET method and follow instruction -> https://github.com/MatusFercak/graf-generator"
-	}
+{
+	"ok": false,
+	"message": "Try GET method and follow instruction -> https://github.com/MatusFercak/graph-generator"
+}
 ```
 
 ## ⚙️ Configuration
