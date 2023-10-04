@@ -26,12 +26,11 @@ def main(context):
                 preprocess_data(context.req.query, data)
 
             graf: bytes = generate_graf_png(data)
-            return context.res.send(graf)
+            return context.res.send(graf, 200)
 
-    except ValueError as error:
-        context.error(str(error))
-        return context.res.json({"ok": False, "error": str(error)}, 400)
+        else:
+            return context.res.json({"ok": False, "message": "Try GET method and follow instruction -> https://github.com/MatusFercak/graf-generator"}, 405)
 
     except Exception as error:
         context.error(str(error))
-        return context.res.json({"ok": False, "error": str(error)}, 500)
+        return context.res.json({"ok": False, "error": str(error)}, 400)

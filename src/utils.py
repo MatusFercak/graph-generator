@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from io import BytesIO
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 @dataclass
@@ -69,9 +69,9 @@ def preprocess_data(obj: {"x": list or str, "y": list or str, "x_label": str, "y
     data.y = [str(val) if data.y_type == "str" else float(val)
               for val in data.y]
 
-    data.x_label = str(obj['x_label'])
-    data.y_label = str(obj['y_label'])
-    data.title = str(obj['title'])
+    data.x_label = str(obj['x_label']).replace("_", " ")
+    data.y_label = str(obj['y_label']).replace("_", " ")
+    data.title = str(obj['title']).replace("_", " ")
 
 
 def generate_graf_png(data: Data) -> bytes:
